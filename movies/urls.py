@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from movies import views
+from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,5 +24,10 @@ urlpatterns = [
     path('movies/', views.movies),
     path('movies/<int:id>', views.detail),
     path('movies/add', views.add),
-    path('movies/delete/<int:id>', views.delete)
+    path('movies/delete/<int:id>', views.delete),
+    path('movies/', views.movie_list),
+    path('movies/<int:id>', views.movie_detail)
+
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
